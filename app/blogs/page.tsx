@@ -1,4 +1,5 @@
 import blogsData from '@/public/Data/Blogs'
+import Link from 'next/link'
 import React from 'react'
 
 const Page = async () => {
@@ -6,8 +7,10 @@ const Page = async () => {
 
     return (
         <div>
-            {blogs.map((data: any) => (
-                <h1 key={data.id}>{data.title}</h1> // Fix map issue
+            {blogs.map((data: any, index: number) => (
+                <Link key={data.id} href={`/blogs/${data.id}`}>
+                    <h1 className='hover:cursor-pointer shadow m-2 rounded-4xl p-2 hover:bg-gray-200' >{index + 1 + '. ' + data.title}</h1>
+                </Link>
             ))}
         </div>
     )
